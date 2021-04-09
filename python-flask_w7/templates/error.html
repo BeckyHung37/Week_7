@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>登入錯誤畫面</title>
+        <style type="text/css">
+        .header{
+            height: 100px;
+            background-color:rgb(174, 214, 250);
+            text-align: center;
+        }
+        h1{
+            font-size: 30px;
+            margin:0px;
+            line-height: 100px;
+        }
+        .title{
+            margin-top: 30px;
+            height:50px;
+            text-align: center;
+        }
+        h2{
+            font-size: 25px;
+            margin:0px;
+            line-height: 50px;
+        }
+        .input_block{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        </style>
+    </head>
+    <body style="margin: 0px">
+        <!-- 如果要去掉邊界，要在body設定 -->
+        <div class=header>
+            <h1>失敗頁面</h1>
+        </div>
+        <div class="title">
+            <form action="/error" method="GET">
+                <h2>{{errorMessage}}</h2>
+            </form>
+        </div>
+        <form action="/signout" method="GET">
+            <div class="input_block">
+                <button>回到首頁</button>
+            </div>
+        </form>
+
+    </body>
+</html>

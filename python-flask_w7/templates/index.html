@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>登入畫面</title>
+        <style type="text/css">
+        .header{
+            height: 100px;
+            background-color:rgb(174, 214, 250);
+            text-align: center;
+        }
+        h1{
+            font-size: 30px;
+            margin:0px;
+            line-height: 100px;
+        }
+        .title{
+            margin-top: 30px;
+            height:50px;
+            text-align: center;
+        }
+        h2{
+            font-size: 25px;
+            margin:0px;
+            line-height: 50px;
+        }
+        .input_block{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            block-size: 35px;
+        }
+        </style>
+    </head>
+    <body style="margin: 0px">
+        <!-- 如果要去掉邊界，要在body設定 -->
+        <div class=header>
+            <h1>歡迎光臨！請註冊登入系統</h1>
+        </div>
+        <div class="title">
+            <h2>註冊帳號</h2>
+        </div>
+        <form action="/signup" method="POST">
+            <div class="input_block">
+                姓名 <input type="text" name="name" value=''/>
+            </div>
+            <div class="input_block">
+                帳號 <input type="text" name="username" value=''/>
+            </div>
+            <div class="input_block">
+                密碼 <input type="text" name="password" value=''/>
+            </div>
+            <div class="input_block">
+                <button type="submit">註冊</button>
+            </div>
+        </form>
+
+        <div class="title">
+            <h2>登入系統</h2>
+        </div>
+        <form action="/signin" method="POST">
+            <div class="input_block">
+                帳號 <input type="text" name="username"value=''/>
+            </div>
+            <div class="input_block">
+                密碼 <input type="password" name="password" value=''/>
+            </div>
+            <div class="input_block">
+                <button type='submit'>登入</button>
+            </div>
+        </form>
+
+
+    </body>
+</html>

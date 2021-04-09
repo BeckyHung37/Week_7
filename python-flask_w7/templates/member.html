@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>登入成功畫面</title>
+        <style type="text/css">
+        .header{
+            height: 100px;
+            background-color:rgb(174, 214, 250);
+            text-align: center;
+        }
+        h1{
+            font-size: 30px;
+            margin:0px;
+            line-height: 100px;
+        }
+        .title{
+            margin-top: 30px;
+            height:50px;
+            text-align: center;
+        }
+        h2{
+            font-size: 25px;
+            margin:0px;
+            line-height: 50px;
+        }
+        h3{
+            margin:0px;
+            line-height: 50px;
+        }
+        .input_block{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .input_block_2{
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+        }
+        .b_2{
+            display: inline-block;
+
+        }
+        .box{
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        
+        </style>
+    </head>
+    <body style="margin: 0px">
+        <!-- 如果要去掉邊界，要在body設定 -->
+        <div class=header>
+            <h1>歡迎光臨！這是會員頁</h1>
+        </div>
+        <div class="title">
+            <h2>{{name}} ，歡迎登入系統</h2>
+        </div>
+        <form action="/signout" method="GET">
+            <div class="input_block">
+                <button>登出系統</button>
+            </div>
+        </form>
+        <!-- --------查詢會員姓名-------- -->
+            <div class="title">
+                <h3>查詢會員姓名</h3>
+            </div>
+            <div class="box">
+                <div class="input_block_2">
+                    <input type="text" name="username" id='username' value=''/>
+                </div>
+                <div class="b_2">
+                    <button onclick='get_user_info()'>查詢</button>
+                </div>
+            </div>
+        <div id='show_user_info', class="input_block">
+
+        </div>
+        <!-- --------查詢會員姓名-------- -->
+    <script>
+        function get_user_info(){
+            var req = new XMLHttpRequest();
+            var val = document.getElementById('username').value;
+            req.open('get','/api/users'+'?'+'username='+val,true);
+            req.onload = function(){
+                var name = construct_user_info(req.response,'name');
+                var username = construct_user_info(req.response,'username')
+                var elemet = document.getElementById('show_user_info');
+                var string = name + '(' + username + ')';
+                var content = document.createTextNode(string);
+                elemet.removeChild(elemet.firstChild);
+                elemet.appendChild(content);
+            };
+            req.send();
+        };
+        function construct_user_info(result,key){
+            result = JSON.parse(result);
+            val = result['data'][key];
+            return val
+
+        }
+    </script>
+    </body>
+</html>
